@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="PIVOT Management Consultants | Break Lean Six Sigma Plateaus with TRIZ">
@@ -40,11 +41,11 @@ import Layout from '../layouts/Layout.astro';
           <span>Baldrige-level deployments</span>
         </div>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <img src="/images/clients/kaiser.png" alt="Kaiser Permanente" class="h-6 opacity-60 grayscale" />
-          <img src="/images/clients/northrop.png" alt="Northrop Grumman" class="h-5 opacity-60 grayscale" />
-          <img src="/images/clients/syngenta.png" alt="Syngenta" class="h-5 opacity-60 grayscale" />
-          <img src="/images/clients/prudential.png" alt="Prudential" class="h-6 opacity-60 grayscale" />
-          <img src="/images/clients/teledyne.png" alt="Teledyne" class="h-5 opacity-60 grayscale" />
+          <img src={`${base}images/clients/kaiser.png`} alt="Kaiser Permanente" class="h-6 opacity-60 grayscale" />
+          <img src={`${base}images/clients/northrop.png`} alt="Northrop Grumman" class="h-5 opacity-60 grayscale" />
+          <img src={`${base}images/clients/syngenta.png`} alt="Syngenta" class="h-5 opacity-60 grayscale" />
+          <img src={`${base}images/clients/prudential.png`} alt="Prudential" class="h-6 opacity-60 grayscale" />
+          <img src={`${base}images/clients/teledyne.png`} alt="Teledyne" class="h-5 opacity-60 grayscale" />
         </div>
       </div>
     </div>

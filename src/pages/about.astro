@@ -1,16 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 
 const team = [
-  { name: 'Akhilesh Gulati', title: 'Founding Partner', creds: 'MS, MBA, CSSBB', photo: '/images/team/akhilesh.jpg', lead: true },
-  { name: 'Alfredo Romero', title: 'Partner', creds: 'MBA', photo: '/images/team/alfredo.jpg' },
-  { name: 'Rolf Biernath', title: 'Innovation & Product Development', creds: 'PhD', photo: '/images/team/rolf.jpg' },
-  { name: 'CG Mistry', title: 'Quality & Business Excellence', creds: 'MBA, MSQA, CMQ/OE, CSSBB', photo: '/images/team/cg.jpg' },
-  { name: 'Nik Porfyris', title: 'Organizational Excellence', creds: 'M.A.P.S., CSSBB, PMP', photo: '/images/team/nik.jpg' },
-  { name: 'Dan Brown', title: 'Quality & Compliance', creds: 'ASQ CQA', photo: '/images/team/dan.jpg' },
-  { name: 'Ashu Rao', title: 'Engineering & Project Management', creds: 'M.S. Mech. Engineering', photo: '/images/team/ashu.jpg' },
-  { name: 'Jaime Chavez', title: 'Quality Systems', creds: 'MBA, CQE, CSSBB', photo: '/images/team/jaime.jpg' },
-  { name: 'Ken Eme', title: 'Manufacturing & Supply Chain', creds: 'B.S. Chemical Engineering', photo: '/images/team/ken.jpg' },
+  { name: 'Akhilesh Gulati', title: 'Founding Partner', creds: 'MS, MBA, CSSBB', photo: `${base}images/team/akhilesh.jpg`, lead: true },
+  { name: 'Alfredo Romero', title: 'Partner', creds: 'MBA', photo: `${base}images/team/alfredo.jpg` },
+  { name: 'Rolf Biernath', title: 'Innovation & Product Development', creds: 'PhD', photo: `${base}images/team/rolf.jpg` },
+  { name: 'CG Mistry', title: 'Quality & Business Excellence', creds: 'MBA, MSQA, CMQ/OE, CSSBB', photo: `${base}images/team/cg.jpg` },
+  { name: 'Nik Porfyris', title: 'Organizational Excellence', creds: 'M.A.P.S., CSSBB, PMP', photo: `${base}images/team/nik.jpg` },
+  { name: 'Dan Brown', title: 'Quality & Compliance', creds: 'ASQ CQA', photo: `${base}images/team/dan.jpg` },
+  { name: 'Ashu Rao', title: 'Engineering & Project Management', creds: 'M.S. Mech. Engineering', photo: `${base}images/team/ashu.jpg` },
+  { name: 'Jaime Chavez', title: 'Quality Systems', creds: 'MBA, CQE, CSSBB', photo: `${base}images/team/jaime.jpg` },
+  { name: 'Ken Eme', title: 'Manufacturing & Supply Chain', creds: 'B.S. Chemical Engineering', photo: `${base}images/team/ken.jpg` },
 ];
 ---
 
@@ -52,7 +53,7 @@ const team = [
 
       <!-- Akhilesh - featured -->
       <div class="bg-surface rounded-lg p-6 border border-border mb-6 flex flex-col sm:flex-row gap-5">
-        <img src="/images/team/akhilesh.jpg" alt="Akhilesh Gulati" class="w-24 h-24 rounded-full object-cover shrink-0" />
+        <img src={`${base}images/team/akhilesh.jpg`} alt="Akhilesh Gulati" class="w-24 h-24 rounded-full object-cover shrink-0" />
         <div>
           <h3 class="font-heading text-lg font-bold text-ink">Akhilesh Gulati</h3>
           <p class="text-xs text-brand font-semibold mb-2">Founding Partner &middot; MS, MBA, CSSBB</p>
