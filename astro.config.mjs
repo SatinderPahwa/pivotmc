@@ -10,7 +10,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pivotmc.com',
+  site: process.env.GITHUB_PAGES ? 'https://satinderpahwa.github.io' : 'https://pivotmc.com',
+  base: process.env.GITHUB_PAGES ? '/pivotmc/' : '/',
   integrations: [react(), mdx(), sitemap()],
 
   vite: {
