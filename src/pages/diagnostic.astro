@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DiagnosticApp from '../components/Diagnostic/DiagnosticApp';
+---
+
+<Layout title="Breakthrough Diagnostic | PIVOT Management Consultants" description="Take the 4-minute Breakthrough Diagnostic to identify where your improvement program stands and what to do next.">
+  <section class="py-12 sm:py-16 border-b border-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-[1.75rem] sm:text-[2rem] lg:text-[2.25rem] text-ink mb-2">
+        Breakthrough Diagnostic
+      </h1>
+      <p class="text-sm sm:text-base text-ink-light max-w-2xl">
+        A 4-minute self-audit across 6 dimensions. Find out if your improvement program is ready for the next level — or if TRIZ is the unlock.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <DiagnosticApp client:load />
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,66 @@
+---
+const navLinks = [
+  { href: '/triz', label: 'The TRIZ Advantage' },
+  { href: '/services', label: 'Services' },
+  { href: '/results', label: 'Results' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-surface/95 backdrop-blur border-b border-border">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="/" class="font-heading text-xl font-bold text-brand">
+      PIVOT<span class="text-ink">MC</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-ink-light">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a href={href} class="hover:text-brand transition-colors">{label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <a
+      href="/diagnostic"
+      class="hidden sm:inline-flex items-center px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
+    >
+      Take the Diagnostic
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 text-ink-light hover:text-brand"
+      aria-label="Open menu"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-surface">
+    <div class="px-4 py-4 space-y-3">
+      {navLinks.map(({ href, label }) => (
+        <a href={href} class="block text-sm font-medium text-ink-light hover:text-brand">{label}</a>
+      ))}
+      <a
+        href="/diagnostic"
+        class="block text-center px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark"
+      >
+        Take the Diagnostic
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

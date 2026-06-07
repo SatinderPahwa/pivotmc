@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogType?: string;
+  article?: { publishedTime?: string; author?: string; tags?: string[] };
+}
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://pivotmc.com');
+const {
+  title,
+  description = "Operations consultants who use TRIZ to dissolve the trade-offs Lean Six Sigma can't — and transfer the capability so it lasts.",
+  ogType = 'website',
+  article,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:site_name" content="PIVOT Management Consultants" />
+    {article?.publishedTime && <meta property="article:published_time" content={article.publishedTime} />}
+    {article?.author && <meta property="article:author" content={article.author} />}
+    {article?.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PIVOT Management Consultants",
+      "url": "https://pivotmc.com",
+      "description": "Operations consultants who use TRIZ to dissolve the trade-offs Lean Six Sigma can't.",
+      "email": "gulati@pivotmc.com",
+      "telephone": "+1-877-748-6862",
+      "sameAs": ["https://www.linkedin.com/company/pivot-management-consultants"],
+      "founder": {
+        "@type": "Person",
+        "name": "Akhilesh Gulati",
+        "jobTitle": "Founder & Principal Consultant",
+        "url": "https://pivotmc.com/about",
+        "sameAs": [
+          "https://www.linkedin.com/in/akhileshgulati",
+          "https://www.qualitydigest.com/author/akhilesh-gulati"
+        ]
+      }
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-surface">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Skip to content</a>
+    <Header />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
