@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
+const link = (path: string) => `${base}${path}`;
 ---
 
 <Layout title="PIVOT Management Consultants | Break Lean Six Sigma Plateaus with TRIZ">
@@ -17,13 +18,13 @@ const base = import.meta.env.BASE_URL;
         </p>
         <div class="mt-5 flex flex-col sm:flex-row gap-3">
           <a
-            href="/diagnostic"
+            href={link('diagnostic')}
             class="inline-flex items-center justify-center px-5 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
           >
             Take the 4-min Breakthrough Diagnostic &rarr;
           </a>
           <a
-            href="/results"
+            href={link('results')}
             class="inline-flex items-center justify-center px-5 py-2.5 border border-border text-ink text-sm font-medium rounded-lg hover:border-brand hover:text-brand transition-colors"
           >
             See client results &darr;
@@ -117,7 +118,7 @@ const base = import.meta.env.BASE_URL;
       <h2 class="text-xl sm:text-2xl mb-2">Not sure where your program stands?</h2>
       <p class="text-sm text-ink-light mb-5">The Breakthrough Diagnostic scores your organisation across 6 dimensions in 4 minutes.</p>
       <a
-        href="/diagnostic"
+        href={link('diagnostic')}
         class="inline-flex items-center px-5 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
       >
         Take the Diagnostic &rarr;

@@ -1,17 +1,17 @@
 ---
-const navLinks = [
-  { href: '/triz', label: 'The TRIZ Advantage' },
-  { href: '/services', label: 'Services' },
-  { href: '/results', label: 'Results' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/about', label: 'About' },
-];
 const base = import.meta.env.BASE_URL;
+const navLinks = [
+  { href: `${base}triz`, label: 'The TRIZ Advantage' },
+  { href: `${base}services`, label: 'Services' },
+  { href: `${base}results`, label: 'Results' },
+  { href: `${base}insights`, label: 'Insights' },
+  { href: `${base}about`, label: 'About' },
+];
 ---
 
 <header class="sticky top-0 z-50 bg-surface/95 backdrop-blur border-b border-border">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-    <a href="/" class="flex items-center">
+    <a href={base} class="flex items-center">
       <img src={`${base}images/logo.png`} alt="PIVOT Management Consultants" class="h-9" />
     </a>
 
@@ -24,7 +24,7 @@ const base = import.meta.env.BASE_URL;
     </ul>
 
     <a
-      href="/diagnostic"
+      href={`${base}diagnostic`}
       class="hidden sm:inline-flex items-center px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
     >
       Take the Diagnostic
@@ -49,7 +49,7 @@ const base = import.meta.env.BASE_URL;
         <a href={href} class="block text-sm font-medium text-ink-light hover:text-brand">{label}</a>
       ))}
       <a
-        href="/diagnostic"
+        href={`${base}diagnostic`}
         class="block text-center px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark"
       >
         Take the Diagnostic

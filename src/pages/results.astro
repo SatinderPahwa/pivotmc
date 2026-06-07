@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Results | PIVOT Management Consultants" description="Proof, not promises. Real metrics from operational interventions.">
@@ -62,7 +63,7 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="text-lg sm:text-xl mb-2">Ready to see what's possible?</h2>
       <p class="text-sm text-ink-light mb-5">Start with the Breakthrough Diagnostic — 4 minutes, 6 dimensions, tailored recommendations.</p>
       <a
-        href="/diagnostic"
+        href={`${base}diagnostic`}
         class="inline-flex items-center px-5 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
       >
         Take the Diagnostic &rarr;

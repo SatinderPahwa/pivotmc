@@ -1,17 +1,18 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 
 const exploreLinks = [
-  { href: '/triz', label: 'The TRIZ Advantage' },
-  { href: '/results', label: 'Results' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/diagnostic', label: 'Breakthrough Diagnostic' },
+  { href: `${base}triz`, label: 'The TRIZ Advantage' },
+  { href: `${base}results`, label: 'Results' },
+  { href: `${base}insights`, label: 'Insights' },
+  { href: `${base}diagnostic`, label: 'Breakthrough Diagnostic' },
 ];
 
 const companyLinks = [
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/privacy', label: 'Privacy Policy' },
+  { href: `${base}services`, label: 'Services' },
+  { href: `${base}about`, label: 'About' },
+  { href: `${base}privacy`, label: 'Privacy Policy' },
 ];
 ---
 
@@ -20,7 +21,7 @@ const companyLinks = [
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
       <!-- Brand + contact -->
       <div class="sm:col-span-2">
-        <a href="/" class="font-heading text-base font-bold text-white">
+        <a href={base} class="font-heading text-base font-bold text-white">
           PIVOT<span class="text-brand">MC</span>
         </a>
         <p class="mt-2 text-xs leading-relaxed">
