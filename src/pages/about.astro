@@ -1,10 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const team = [
+  { name: 'Akhilesh Gulati', title: 'Founding Partner', creds: 'MS, MBA, CSSBB', photo: '/images/team/akhilesh.jpg', lead: true },
+  { name: 'Alfredo Romero', title: 'Partner', creds: 'MBA', photo: '/images/team/alfredo.jpg' },
+  { name: 'Rolf Biernath', title: 'Innovation & Product Development', creds: 'PhD', photo: '/images/team/rolf.jpg' },
+  { name: 'CG Mistry', title: 'Quality & Business Excellence', creds: 'MBA, MSQA, CMQ/OE, CSSBB', photo: '/images/team/cg.jpg' },
+  { name: 'Nik Porfyris', title: 'Organizational Excellence', creds: 'M.A.P.S., CSSBB, PMP', photo: '/images/team/nik.jpg' },
+  { name: 'Dan Brown', title: 'Quality & Compliance', creds: 'ASQ CQA', photo: '/images/team/dan.jpg' },
+  { name: 'Ashu Rao', title: 'Engineering & Project Management', creds: 'M.S. Mech. Engineering', photo: '/images/team/ashu.jpg' },
+  { name: 'Jaime Chavez', title: 'Quality Systems', creds: 'MBA, CQE, CSSBB', photo: '/images/team/jaime.jpg' },
+  { name: 'Ken Eme', title: 'Manufacturing & Supply Chain', creds: 'B.S. Chemical Engineering', photo: '/images/team/ken.jpg' },
+];
 ---
 
 <Layout title="About | PIVOT Management Consultants" description="Meet the team behind PIVOT Management Consultants.">
   <section class="py-12 sm:py-16 border-b border-border">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-[1.75rem] sm:text-[2rem] lg:text-[2.25rem] text-ink mb-3">About PIVOT</h1>
       <p class="text-sm sm:text-base text-ink-light leading-relaxed max-w-2xl">
         PIVOT Management Consultants delivers operational breakthroughs for organisations whose continuous improvement programs have plateaued. We combine Lean Six Sigma rigour with TRIZ innovation methodology to dissolve the trade-offs others accept as constraints.
@@ -14,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- Philosophy -->
   <section class="py-12 sm:py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-lg sm:text-xl mb-5">Our approach</h2>
       <div class="grid sm:grid-cols-3 gap-4">
         <div class="rounded-lg p-5 bg-surface-alt border border-border">
@@ -33,23 +45,37 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Akhilesh profile -->
+  <!-- Team -->
   <section class="py-12 sm:py-16 bg-surface-alt border-y border-border">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-lg sm:text-xl mb-5">Leadership</h2>
-      <div class="bg-surface rounded-lg p-6 border border-border">
-        <h3 class="font-heading text-lg font-bold text-ink mb-1">Akhilesh Gulati</h3>
-        <p class="text-xs text-brand font-semibold mb-3">Founder & Principal Consultant</p>
-        <p class="text-sm text-ink-light mb-3">
-          25+ years driving measurable operational improvements across aerospace, medical devices, manufacturing, and healthcare. Published author in Quality Digest. Baldrige-level deployment experience. TRIZ practitioner and trainer.
-        </p>
-        <p class="text-sm text-ink-light mb-4">
-          Akhilesh's work sits at the intersection of structured innovation (TRIZ), operational excellence (Lean Six Sigma), and quality systems (ISO/AS). He builds programmes that outlast his engagement.
-        </p>
-        <div class="flex gap-4 text-sm">
-          <a href="https://www.linkedin.com/in/akhileshgulati" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-medium">LinkedIn &rarr;</a>
-          <a href="https://www.qualitydigest.com/author/akhilesh-gulati" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-medium">Quality Digest &rarr;</a>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-lg sm:text-xl mb-6">The team</h2>
+
+      <!-- Akhilesh - featured -->
+      <div class="bg-surface rounded-lg p-6 border border-border mb-6 flex flex-col sm:flex-row gap-5">
+        <img src="/images/team/akhilesh.jpg" alt="Akhilesh Gulati" class="w-24 h-24 rounded-full object-cover shrink-0" />
+        <div>
+          <h3 class="font-heading text-lg font-bold text-ink">Akhilesh Gulati</h3>
+          <p class="text-xs text-brand font-semibold mb-2">Founding Partner &middot; MS, MBA, CSSBB</p>
+          <p class="text-sm text-ink-light mb-2">
+            25+ years driving measurable operational improvements across aerospace, medical devices, manufacturing, and healthcare. Published author in Quality Digest. Baldrige-level deployment experience. TRIZ practitioner and trainer.
+          </p>
+          <div class="flex gap-4 text-sm">
+            <a href="https://www.linkedin.com/in/akhileshgulati" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-medium">LinkedIn &rarr;</a>
+            <a href="https://www.qualitydigest.com/inside/customer-care-article/reclaiming-quality-age-ai-drift-and-customer-distrust-081125.html" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-medium">Quality Digest &rarr;</a>
+          </div>
         </div>
+      </div>
+
+      <!-- Rest of team -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {team.filter(m => !m.lead).map((member) => (
+          <div class="bg-surface rounded-lg p-4 border border-border text-center">
+            <img src={member.photo} alt={member.name} class="w-16 h-16 rounded-full object-cover mx-auto mb-2" />
+            <p class="text-sm font-semibold text-ink">{member.name}</p>
+            <p class="text-xs text-ink-light">{member.title}</p>
+            <p class="text-[0.6rem] text-ink-muted mt-0.5">{member.creds}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
