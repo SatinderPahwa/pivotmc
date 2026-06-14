@@ -1,109 +1,140 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
+
+// Once Akhilesh sets up Cal.com, replace this with his username (e.g. "akhileshgulati")
+const calUsername = '';
 ---
 
-<Layout title="Contact | PIVOT Management Consultants" description="Schedule a conversation about your operational challenges. We'll listen first, then recommend next steps.">
+<Layout title="Contact | PIVOT Management Consultants" description="Schedule a 15-minute call or send a message. We'll listen first, then recommend next steps.">
   <section class="py-12 sm:py-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-[1.75rem] sm:text-[2rem] lg:text-[2.25rem] text-ink mb-2">Let's talk.</h1>
       <p class="text-sm sm:text-base text-ink-light max-w-xl mb-10">
-        Tell us a bit about your situation and we'll get back to you within one business day. No pitch — just a conversation about what's possible.
+        Schedule a 15-minute introductory call, or send a message and we'll get back to you within one business day. No pitch — just a conversation about what's possible.
       </p>
 
-      <form
-        name="contact"
-        method="POST"
-        action={`${base}contact/thanks`}
-        class="space-y-5"
-        id="contact-form"
-      >
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div>
-            <label for="name" class="block text-sm font-medium text-ink mb-1">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
-              placeholder="Your name"
-            />
-          </div>
-          <div>
-            <label for="company" class="block text-sm font-medium text-ink mb-1">Company</label>
-            <input
-              type="text"
-              id="company"
-              name="company"
-              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
-              placeholder="Company name"
-            />
-          </div>
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div>
-            <label for="email" class="block text-sm font-medium text-ink mb-1">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
-              placeholder="you@company.com"
-            />
-          </div>
-          <div>
-            <label for="phone" class="block text-sm font-medium text-ink mb-1">Phone <span class="text-ink-muted font-normal">(optional)</span></label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
-              placeholder="+1 (555) 000-0000"
-            />
-          </div>
-        </div>
-
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Left: Schedule a call -->
         <div>
-          <label for="interest" class="block text-sm font-medium text-ink mb-1">What are you looking for?</label>
-          <select
-            id="interest"
-            name="interest"
-            class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+          <h2 class="text-lg font-heading font-bold text-ink mb-1">Schedule a call</h2>
+          <p class="text-sm text-ink-light mb-5">Pick a time that works for you. 15 minutes, no obligation.</p>
+
+          {calUsername ? (
+            <!-- Cal.com embed — activated once Akhilesh sets up his account -->
+            <div
+              id="cal-embed"
+              class="rounded-lg border border-border overflow-hidden bg-white min-h-[400px]"
+            >
+              <iframe
+                src={`https://cal.com/${calUsername}/15min?embed=true&layout=month_view`}
+                class="w-full min-h-[500px] border-0"
+                title="Schedule a call with Akhilesh Gulati"
+              ></iframe>
+            </div>
+          ) : (
+            <!-- Placeholder until Cal.com is set up -->
+            <div class="rounded-lg border-2 border-dashed border-brand/30 bg-brand-light p-8 text-center">
+              <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-ink mb-1">Online booking coming soon</p>
+              <p class="text-xs text-ink-light mb-4">In the meantime, send a message or reach out directly.</p>
+              <div class="text-xs text-ink-muted">
+                <p>Pacific Time (Los Angeles)</p>
+                <p>Mon-Fri, 9:00 AM - 5:00 PM PT</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Right: Send a message -->
+        <div>
+          <h2 class="text-lg font-heading font-bold text-ink mb-1">Send a message</h2>
+          <p class="text-sm text-ink-light mb-5">Tell us about your situation and we'll follow up.</p>
+
+          <form
+            name="contact"
+            class="space-y-4"
+            id="contact-form"
           >
-            <option value="">Select one...</option>
-            <option value="operations">Operations improvement (Lean, Six Sigma, TRIZ)</option>
-            <option value="quality">Quality systems & ISO readiness</option>
-            <option value="training">Training or workshop</option>
-            <option value="innovation">Innovation / contradiction resolution</option>
-            <option value="diagnostic">Discuss my Diagnostic results</option>
-            <option value="other">Something else</option>
-          </select>
-        </div>
+            <div>
+              <label for="name" class="block text-sm font-medium text-ink mb-1">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+                placeholder="Your name"
+              />
+            </div>
 
-        <div>
-          <label for="message" class="block text-sm font-medium text-ink mb-1">Tell us about your situation</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand resize-y"
-            placeholder="What challenge are you facing? What's been tried?"
-          ></textarea>
-        </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-ink mb-1">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+                placeholder="you@company.com"
+              />
+            </div>
 
-        <button
-          type="submit"
-          class="inline-flex items-center px-6 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
-        >
-          Send message
-        </button>
-      </form>
+            <div>
+              <label for="company" class="block text-sm font-medium text-ink mb-1">Company <span class="text-ink-muted font-normal">(optional)</span></label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+                placeholder="Company name"
+              />
+            </div>
+
+            <div>
+              <label for="interest" class="block text-sm font-medium text-ink mb-1">What are you looking for?</label>
+              <select
+                id="interest"
+                name="interest"
+                class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+              >
+                <option value="">Select one...</option>
+                <option value="operations">Operations improvement (Lean, Six Sigma, TRIZ)</option>
+                <option value="quality">Quality systems & ISO readiness</option>
+                <option value="training">Training or workshop</option>
+                <option value="innovation">Innovation / contradiction resolution</option>
+                <option value="diagnostic">Discuss my Diagnostic results</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-ink mb-1">Your message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand resize-y"
+                placeholder="What challenge are you facing? What's been tried?"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="inline-flex items-center px-6 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
+            >
+              Send message
+            </button>
+          </form>
+        </div>
+      </div>
 
       <!-- Direct contact -->
-      <div class="mt-10 pt-8 border-t border-border">
+      <div class="mt-12 pt-8 border-t border-border">
         <p class="text-sm font-semibold text-ink mb-3">Prefer to reach out directly?</p>
         <div class="flex flex-col sm:flex-row gap-4 text-sm text-ink-light">
           <a href="mailto:gulati@pivotmc.com" class="text-brand hover:text-brand-dark font-medium">gulati@pivotmc.com</a>
@@ -125,7 +156,7 @@ const base = import.meta.env.BASE_URL;
     const body = Object.fromEntries(data.entries());
     const subject = encodeURIComponent(`PIVOT inquiry from ${body.name} — ${body.interest || 'General'}`);
     const emailBody = encodeURIComponent(
-      `Name: ${body.name}\nCompany: ${body.company || 'N/A'}\nPhone: ${body.phone || 'N/A'}\nInterest: ${body.interest || 'N/A'}\n\n${body.message || ''}`
+      `Name: ${body.name}\nCompany: ${body.company || 'N/A'}\nInterest: ${body.interest || 'N/A'}\n\n${body.message || ''}`
     );
     window.location.href = `mailto:gulati@pivotmc.com?subject=${subject}&body=${emailBody}`;
   });
