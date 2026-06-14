@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Services | PIVOT Management Consultants" description="Training and consulting that deliver results. Lean, Six Sigma, TRIZ, Quality Systems, and operational excellence.">
@@ -96,6 +97,20 @@ import Layout from '../layouts/Layout.astro';
           <p class="text-xs text-ink-light">Short-format sessions introducing essential concepts and tools. Ideal for building awareness and inspiring teams.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-10 sm:py-14 bg-surface-alt border-t border-border">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-lg sm:text-xl mb-2">Not sure which service fits?</h2>
+      <p class="text-sm text-ink-light mb-5">The Breakthrough Diagnostic scores your operation across 6 dimensions and recommends where to start.</p>
+      <a
+        href={`${base}diagnostic`}
+        class="inline-flex items-center px-5 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
+      >
+        Take the Diagnostic &rarr;
+      </a>
     </div>
   </section>
 </Layout>
