@@ -19,6 +19,33 @@ const formattedDate = entry.data.pubDate.toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": entry.data.title,
+  "description": entry.data.description,
+  "datePublished": entry.data.pubDate.toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": entry.data.author,
+    "url": "https://pivotmc.com/about",
+    "sameAs": [
+      "https://www.linkedin.com/in/akhileshgulati",
+      "https://www.qualitydigest.com/author/akhilesh-gulati"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PIVOT Management Consultants",
+    "url": "https://pivotmc.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://pivotmc.com/insights/${entry.id}`
+  },
+  "keywords": entry.data.tags.join(", ")
+};
 ---
 
 <Layout
@@ -27,6 +54,7 @@ const formattedDate = entry.data.pubDate.toLocaleDateString('en-US', {
   ogType="article"
   article={{ publishedTime: entry.data.pubDate.toISOString(), author: entry.data.author, tags: entry.data.tags }}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <article class="py-12 sm:py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Back link -->

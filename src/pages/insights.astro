@@ -7,9 +7,27 @@ const allInsights = await getCollection('insights');
 const sortedInsights = allInsights.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
+
+const listJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Insights — PIVOT Management Consultants",
+  "description": "Thought leadership on TRIZ, Quality 4.0, and operational excellence from Akhilesh Gulati.",
+  "url": "https://pivotmc.com/insights",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": sortedInsights.map((post, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `https://pivotmc.com/insights/${post.id}`,
+      "name": post.data.title
+    }))
+  }
+};
 ---
 
 <Layout title="Insights | PIVOT Management Consultants" description="Thought leadership on TRIZ, Quality 4.0, and operational excellence from Akhilesh Gulati.">
+  <script type="application/ld+json" set:html={JSON.stringify(listJsonLd)} />
   <section class="py-12 sm:py-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-xs uppercase tracking-wider text-brand font-semibold mb-2">As published in Quality Digest</p>
