@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Contact | PIVOT Management Consultants" description="Schedule a conversation about your operational challenges. We'll listen first, then recommend next steps.">
+  <section class="py-12 sm:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-[1.75rem] sm:text-[2rem] lg:text-[2.25rem] text-ink mb-2">Let's talk.</h1>
+      <p class="text-sm sm:text-base text-ink-light max-w-xl mb-10">
+        Tell us a bit about your situation and we'll get back to you within one business day. No pitch — just a conversation about what's possible.
+      </p>
+
+      <form
+        name="contact"
+        method="POST"
+        action={`${base}contact/thanks`}
+        class="space-y-5"
+        id="contact-form"
+      >
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-ink mb-1">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label for="company" class="block text-sm font-medium text-ink mb-1">Company</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+              placeholder="Company name"
+            />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="email" class="block text-sm font-medium text-ink mb-1">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+              placeholder="you@company.com"
+            />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-ink mb-1">Phone <span class="text-ink-muted font-normal">(optional)</span></label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+              placeholder="+1 (555) 000-0000"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="interest" class="block text-sm font-medium text-ink mb-1">What are you looking for?</label>
+          <select
+            id="interest"
+            name="interest"
+            class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+          >
+            <option value="">Select one...</option>
+            <option value="operations">Operations improvement (Lean, Six Sigma, TRIZ)</option>
+            <option value="quality">Quality systems & ISO readiness</option>
+            <option value="training">Training or workshop</option>
+            <option value="innovation">Innovation / contradiction resolution</option>
+            <option value="diagnostic">Discuss my Diagnostic results</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-ink mb-1">Tell us about your situation</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand resize-y"
+            placeholder="What challenge are you facing? What's been tried?"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="inline-flex items-center px-6 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors"
+        >
+          Send message
+        </button>
+      </form>
+
+      <!-- Direct contact -->
+      <div class="mt-10 pt-8 border-t border-border">
+        <p class="text-sm font-semibold text-ink mb-3">Prefer to reach out directly?</p>
+        <div class="flex flex-col sm:flex-row gap-4 text-sm text-ink-light">
+          <a href="mailto:gulati@pivotmc.com" class="text-brand hover:text-brand-dark font-medium">gulati@pivotmc.com</a>
+          <span class="hidden sm:inline text-ink-muted">&middot;</span>
+          <a href="tel:+18779486862" class="text-brand hover:text-brand-dark font-medium">1-877-PIVOTMC</a>
+          <span class="hidden sm:inline text-ink-muted">&middot;</span>
+          <a href="https://www.linkedin.com/in/akhileshgulati" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-medium">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const body = Object.fromEntries(data.entries());
+    const subject = encodeURIComponent(`PIVOT inquiry from ${body.name} — ${body.interest || 'General'}`);
+    const emailBody = encodeURIComponent(
+      `Name: ${body.name}\nCompany: ${body.company || 'N/A'}\nPhone: ${body.phone || 'N/A'}\nInterest: ${body.interest || 'N/A'}\n\n${body.message || ''}`
+    );
+    window.location.href = `mailto:gulati@pivotmc.com?subject=${subject}&body=${emailBody}`;
+  });
+</script>
