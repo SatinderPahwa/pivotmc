@@ -34,7 +34,7 @@ export const questions: Question[] = [
     dimension: 'lssMaturity',
     text: 'How would you describe your Lean Six Sigma deployment?',
     answers: [
-      { text: 'No formal programme in place', score: 0 },
+      { text: 'No formal program in place', score: 0 },
       { text: 'Pilot projects in a few areas', score: 33 },
       { text: 'Deployed across most functions', score: 66 },
       { text: 'Enterprise-wide with certified belts at all levels', score: 100 },
@@ -46,7 +46,7 @@ export const questions: Question[] = [
     text: 'How many staff are trained or certified in LSS methods?',
     answers: [
       { text: 'Fewer than 5', score: 0 },
-      { text: '5–20 across the organisation', score: 33 },
+      { text: '5–20 across the organization', score: 33 },
       { text: '20–50 with active project work', score: 66 },
       { text: '50+ with an internal training pipeline', score: 100 },
     ],
@@ -80,7 +80,7 @@ export const questions: Question[] = [
   {
     id: 5,
     dimension: 'contradictionExposure',
-    text: 'How often does your team face trade-offs it can\'t optimise away (e.g. faster vs. cheaper, lighter vs. stronger)?',
+    text: 'How often does your team face trade-offs it can\'t optimize away (e.g. faster vs. cheaper, lighter vs. stronger)?',
     answers: [
       { text: 'Rarely — most problems yield to standard tools', score: 0 },
       { text: 'Occasionally on complex projects', score: 33 },
@@ -130,7 +130,7 @@ export const questions: Question[] = [
   {
     id: 9,
     dimension: 'innovationPipeline',
-    text: 'Does your organisation have a structured approach to product or process innovation?',
+    text: 'Does your organization have a structured approach to product or process innovation?',
     answers: [
       { text: 'Innovation is ad hoc or reactive', score: 0 },
       { text: 'Some R&D process, but not linked to operations', score: 33 },
@@ -205,22 +205,22 @@ export function calculateResults(answers: Record<number, number>): DiagnosticRes
 
 export const bandInfo: Record<Band, { headline: string; description: string; cta: string }> = {
   Foundational: {
-    headline: 'Your programme is building foundations.',
+    headline: 'Your program is building foundations.',
     description: 'Focus on deploying core LSS capabilities and building leadership alignment before tackling advanced methods.',
     cta: 'Talk to us about accelerating your foundation.',
   },
   Developing: {
-    headline: 'Your programme is gaining momentum.',
+    headline: 'Your program is gaining momentum.',
     description: 'You have traction but haven\'t yet hit the ceiling. Now is the time to build the innovation capability that prevents a future plateau.',
     cta: 'Learn how TRIZ prevents the plateau before it hits.',
   },
   Plateaued: {
-    headline: 'Your programme is ready for TRIZ.',
+    headline: 'Your program is ready for TRIZ.',
     description: 'High maturity, flattening returns, clear contradictions — exactly where structured innovation breaks through. This is the most common profile we see in our clients.',
     cta: 'Book a call to discuss your breakthrough.',
   },
   'Breakthrough-ready': {
-    headline: 'Your programme is operating at a high level.',
+    headline: 'Your program is operating at a high level.',
     description: 'Strong across all dimensions. The question now is: what\'s the next constraint to dissolve?',
     cta: 'Let\'s identify your next breakthrough together.',
   },
